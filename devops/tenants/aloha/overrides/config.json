@@ -1,0 +1,30 @@
+{
+    "default_hs_url": "https://matrix.dev.aloha.cloud",
+    "default_is_url": "https://matrix.dev.aloha.cloud",
+    "disable_custom_urls": false,
+    "disable_guests": false,
+    "disable_login_language_selector": true,
+    "disable_3pid_login": true,
+    "brand": "Aloha",
+    "integrations_ui_url": "",
+    "integrations_rest_url": "",
+    "integrations_jitsi_widget_url": "",
+    "bug_report_endpoint_url": "",
+    "features": {
+        "feature_groups": "labs",
+        "feature_pinning": "labs"
+    },
+    "default_federate": false,
+    "welcomePageUrl": "home.html",
+    "default_theme": "light",
+    "roomDirectory": {
+        "servers": [
+            "dev.aloha.cloud"
+        ]
+    },
+    "welcomeUserId": "@aloha:dev.aloha.cloud",
+    "piwik": {},
+    "enable_presence_by_hs_url": {
+        "https://matrix.dev.aloha.cloud": true
+    }
+}
