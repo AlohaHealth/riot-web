@@ -1,0 +1,29 @@
+{{- $fullName := include "talk-web.fullname" . -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ $fullName }}
+  labels:
+    app: {{ include "talk-web.name" . }}
+    chart: {{ include "talk-web.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    tenant: {{ .Values.tenant.name }}
+  annotations:
+    certmanager.k8s.io/cluster-issuer: {{ .Values.certmanager.issuer }}
+    ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: “true”
+spec:
+  tls:
+  - hosts:
+    - {{ include "talk-web.host" . }}
+    secretName: {{ $fullName }}-tls
+  rules:
+  - host: {{ include "talk-web.host" . }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ $fullName }}
+          servicePort: http
