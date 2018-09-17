@@ -1,0 +1,18 @@
+# Default values for talk-web.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+tenant:
+  name: weheal
+  domain: "weheal.org"
+  hostDomain: "weheal.aloha.health"
+
+certmanager:
+  issuer: letsencrypt
+
+image:
+  repository: gcr.io/aloha-internal/aloha-talk-web 
+  tag: latest
+  pullPolicy: IfNotPresent
+  pullSecrets:
+  - aloha-gcr-io
