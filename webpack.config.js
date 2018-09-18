@@ -28,6 +28,8 @@ module.exports = {
         "theme-light":  "./node_modules/matrix-react-sdk/res/themes/light/css/light.scss",
         "theme-dark":   "./node_modules/matrix-react-sdk/res/themes/dark/css/dark.scss",
         "theme-status": "./res/themes/status/css/status.scss",
+        "theme-blue":   "./res/themes/blue/css/blue.scss",
+        "theme-yellow": "./res/themes/yellow/css/yellow.scss",
     },
     module: {
         preLoaders: [
