@@ -18,10 +18,8 @@ limitations under the License.
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// import SettingsStore from 'matrix-react-sdk/lib/settings/SettingsStore';
 import {default_theme} from './../../../../config';
 
-// SettingsStore.getValue("theme")); // SettingsStore returns the default theme in React SDK
 // const i = [1, 2, 3, 4, 5][Math.floor(Math.random() * 5)];
 const DEFAULT_LOGO_URI = "themes/" + default_theme + "/img/logo.png";
 

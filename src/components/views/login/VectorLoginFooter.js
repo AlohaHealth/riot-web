@@ -19,7 +19,7 @@ limitations under the License.
 var React = require('react');
 import { _t } from 'matrix-react-sdk/lib/languageHandler';
 import SettingsStore from 'matrix-react-sdk/lib/settings/SettingsStore';
-
+console.log(SettingsStore.getValue("theme"));
 module.exports = React.createClass({
     displayName: 'VectorLoginFooter',
     statics: {
