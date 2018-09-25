@@ -18,12 +18,12 @@ limitations under the License.
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import {default_theme} from './../../../../config';
 
-const i = [1, 2, 3, 4, 5][Math.floor(Math.random() * 5)];
-const DEFAULT_LOGO_URI = "themes/riot/img/logos/riot-im-logo-" + i + ".svg";
+const DEFAULT_LOGO_URI = "themes/" + default_theme + "/img/logo.png";
 
 module.exports = React.createClass({
-    displayName: 'VectorLoginHeader',
+    displayName: 'AHNLoginHeader',
     statics: {
         replaces: 'LoginHeader',
     },
