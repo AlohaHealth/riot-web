@@ -164,7 +164,6 @@ To
         const RoomDirectoryButton = sdk.getComponent('elements.RoomDirectoryButton');
         const CreateRoomButton = sdk.getComponent('elements.CreateRoomButton');
         const SettingsButton = sdk.getComponent('elements.SettingsButton');
-        const GroupsButton = sdk.getComponent('elements.GroupsButton');
 
         const groupsButton = SettingsStore.getValue("TagPanel.disableTagPanel") ?
             <GroupsButton tooltip={true} /> : null;
