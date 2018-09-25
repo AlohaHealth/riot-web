@@ -19,7 +19,7 @@ How to whitelabel for different tenants in `riot-web`
     │   └── img                          # images
     |       └── logo.png                 # The app picks this up 
 
-2. Add this new tenant's theme in `webpack.congig.js`
+2. Add this new tenant's theme in `webpack.congig.js`, eventhough the actual theme for all components are still in `matrix-react-sdk`, see the 'theme' path in the below example.
 
 Example:
 
@@ -55,6 +55,7 @@ At the moment, the `riot-web` app uses themes from the `matrix-react-skd`
 
 1. Clone the `/matrix-react-sdk/res/themes/light` theme
 2. Rename `light.scss` to `main.scss`
+3. Update sass variables values in `_base.scss` for tenant's specific color theme etc.
 
 > Note: Once we have Aloha's theme, all future themes should be cloned from `themes\aloha`
 
