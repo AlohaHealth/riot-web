@@ -15,17 +15,39 @@ How to whitelabel for different tenants in `riot-web`
     themes/
     ├── thpii                            # Tenant's name
     │   ├── css                          # sass files
+    |       └──main.scss                 # This imports the tenant's or Aloha's default theme from `matrix-react-sdk` and overrides
     │   ├── fonts                        # fonts specific
     │   └── img                          # images
     |       └── logo.png                 # The app picks this up 
 
-2. Add this new tenant's theme in `webpack.congig.js`, eventhough the actual theme for all components are still in `matrix-react-sdk`, see the 'theme' path in the below example.
+Example of `/riot-web/res/themes/thpii/css/main.scss`
 
-Example:
+```css
+/*
+ * import the component theme installed in `matrix-react-sdk`
+ * The theme could be any theme installed in the `matrix-react-sdk/res/themes` folder
+ * By default this theme should be the Aloha's whitelabled theme
+ */
+@import "../../../../node_modules/matrix-react-sdk/res/themes/dark/css/dark.scss";
+
+/*
+ * THPii's style overrides here
+ */
+body {
+    background-color: #2ebdbc; // the page background color here overrides the one in the dark.scss
+}
+
+```
+
+2. Add this new tenant's theme in `webpack.congig.js`. 
+
+Example: theme in `webpack.congig.js` 
 
 ```json
- "theme-thpii": "./node_modules/matrix-react-sdk/res/themes/thpii/css/main.scss"
+ "theme-thpii": "./res/themes/thpii/css/main.scss"
 ```
+
+> Note: The `./res/themes/thpii/css/main.scss` still needs to import the actual theme for all components from `matrix-react-sdk`. See `import` statement in the example of Step 1.
 
 3. Update the `default_theme` in `config.json`
 
@@ -53,7 +75,7 @@ How to create theme for new tenant in `matrix-react-sdk`
 
 At the moment, the `riot-web` app uses themes from the `matrix-react-skd`
 
-1. Clone the `/matrix-react-sdk/res/themes/light` theme
+1. Clone the `/matrix-react-sdk/res/themes/light` to `/matrix-react-sdk/res/themes/{newTheme}`
 2. Rename `light.scss` to `main.scss`
 3. Update sass variables values in `_base.scss` for tenant's specific color theme etc.
 

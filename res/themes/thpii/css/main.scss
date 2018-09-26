@@ -1,0 +1,14 @@
+
+/*
+ * import the component theme installed in `matrix-react-sdk`
+ * The theme could be any theme installed in the `matrix-react-sdk/res/themes` folder
+ * By default this theme should be the Aloha's whitelabled theme
+ */
+@import "../../../../node_modules/matrix-react-sdk/res/themes/dark/css/dark.scss";
+
+/*
+ * THPii's style overrides here
+ */
+body {
+    background-color: #2ebdbc; // the page background color here overrides the one in the dark.scss
+}
