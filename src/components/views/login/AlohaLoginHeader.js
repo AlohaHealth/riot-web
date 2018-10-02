@@ -19,7 +19,7 @@ limitations under the License.
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DEFAULT_LOGO_URI = "themes/AlohaBlue/img/logo.png";
+const DEFAULT_LOGO_URI = "themes/weheal/img/logo.png";
 
 module.exports = React.createClass({
     displayName: 'AlohaLoginHeader',
