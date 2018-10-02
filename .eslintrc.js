@@ -1,3 +1,3 @@
 module.exports = {
-    extends: ["./node_modules/matrix-react-sdk/.eslintrc.js"],
+    extends: ["./node_modules/@alohahealth/matrix-react-sdk/.eslintrc.js"],
 }

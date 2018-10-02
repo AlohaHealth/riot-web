@@ -53,7 +53,7 @@ const COPY_LIST = [
     ["res/home-status.html", "webapp"],
     ["res/home/**", "webapp/home"],
     ["res/vector-icons/**", "webapp/vector-icons"],
-    ["node_modules/matrix-react-sdk/res/{fonts,img,themes,media}/**", "webapp"],
+    ["node_modules/@alohahealth/matrix-react-sdk/res/{fonts,img,themes,media}/**", "webapp"],
     ["res/themes/**", "webapp/themes"],
     ["node_modules/emojione/assets/svg/*", "webapp/emojione/svg/"],
     ["node_modules/emojione/assets/png/*", "webapp/emojione/png/"],
@@ -136,7 +136,7 @@ function next(i, err) {
                 .on('ready', cb)
                 .on('error', errCheck);
         } else if (opts.lang) {
-            const reactSdkFile = 'node_modules/matrix-react-sdk/src/i18n/strings/' + source + '.json';
+            const reactSdkFile = 'node_modules/@alohahealth/matrix-react-sdk/src/i18n/strings/' + source + '.json';
             const riotWebFile = 'src/i18n/strings/' + source + '.json';
 
             // XXX: Use a debounce because for some reason if we read the language
@@ -174,7 +174,7 @@ function next(i, err) {
 }
 
 function genLangFile(lang, dest) {
-    const reactSdkFile = 'node_modules/matrix-react-sdk/src/i18n/strings/' + lang + '.json';
+    const reactSdkFile = 'node_modules/@alohahealth/matrix-react-sdk/src/i18n/strings/' + lang + '.json';
     const riotWebFile = 'src/i18n/strings/' + lang + '.json';
 
     let translations = {};

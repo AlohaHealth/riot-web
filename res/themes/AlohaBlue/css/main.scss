@@ -1,5 +1,6 @@
-@import "../../../../node_modules/matrix-react-sdk/res/themes/AlohaBlue/css/main.scss";
-@import "../../../../node_modules/matrix-react-sdk/res/css/_components.scss";
+@import "../../../../node_modules/@alohahealth/matrix-react-sdk/res/themes/AlohaBlue/css/main.scss";
+// @import "_variables.scss"; // Overrides theme's variables at riot-web's stack
+@import "../../../../node_modules/@alohahealth/matrix-react-sdk/res/css/_components.scss";
 @import "_common.scss";
 @import "_AppsDrawer.scss";
 @import "_BaseAvatar.scss";
@@ -10,7 +11,3 @@
 @import "_SearchBox.scss";
 @import "_FilePanel.scss";
 @import "_EventTile.scss";
-
-
-
-
