@@ -70,7 +70,7 @@ module.exports = function (config) {
             // This isn't required by any of the tests, but it stops karma
             // logging warnings when it serves a 404 for them.
             {
-                pattern: 'node_modules/matrix-react-sdk/res/img/*',
+                pattern: 'node_modules/@alohahealth/matrix-react-sdk/res/img/*',
                 watched: false, included: false, served: true, nocache: false,
             },
             {
@@ -81,7 +81,7 @@ module.exports = function (config) {
 
         proxies: {
             // redirect img links to the karma server. See above.
-            "/img/": "/base/node_modules/matrix-react-sdk/res/img/",
+            "/img/": "/base/node_modules/@alohahealth/matrix-react-sdk/res/img/",
             "/themes/": "/base/res/themes/",
         },
 

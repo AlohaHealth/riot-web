@@ -1,0 +1,8 @@
+
+.mx_AccessibleButton:focus {
+    background-color: transparent;
+}
+.mx_RoomTile_selected {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid $roomtile-selected-bg-color;
+}

@@ -25,8 +25,9 @@ module.exports = {
         "olm": "./src/vector/olm-loader.js",
 
         // CSS themes
-        "theme-light":  "./node_modules/matrix-react-sdk/res/themes/light/css/light.scss",
-        "theme-dark":   "./node_modules/matrix-react-sdk/res/themes/dark/css/dark.scss",
+        "theme-light":  "./node_modules/@alohahealth/matrix-react-sdk/res/themes/light/css/light.scss",
+        "theme-dark":   "./node_modules/@alohahealth/matrix-react-sdk/res/themes/dark/css/dark.scss",
+        "theme-weheal":  "./res/themes/weheal/css/main.scss",
         "theme-status": "./res/themes/status/css/status.scss",
     },
     module: {
@@ -104,6 +105,9 @@ module.exports = {
 
             // same goes for js-sdk
             "matrix-js-sdk": path.resolve('./node_modules/matrix-js-sdk'),
+
+            // aloha editions
+            "matrix-react-sdk": path.resolve('./node_modules/@alohahealth/matrix-react-sdk'),
         },
     },
     externals: {
