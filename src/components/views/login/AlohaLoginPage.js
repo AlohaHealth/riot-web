@@ -41,14 +41,14 @@ const firebaseUIConfig = {
     //   },
     // },
 
-    // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    {
-      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      // Required to enable this provider in One-Tap Sign-up.
-      authMethod: "https://accounts.google.com",
-      // Required to enable ID token credentials for this provider.
-      clientId: "172138303154-0rp78630b48i9a9g20mqv7l9vde8539q.apps.googleusercontent.com",
-    },
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    // {
+    //   provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    //   // Required to enable this provider in One-Tap Sign-up.
+    //   authMethod: "https://accounts.google.com",
+    //   // Required to enable ID token credentials for this provider.
+    //   clientId: CLIENT_ID,
+    // },
 
     // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
     // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
