@@ -25,11 +25,11 @@ const firebaseUIConfig = {
   signInFlow: "popup",
   signInOptions: [
     // Choose the providers and display order you want to offer users:
-    // {
-    //   provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    //   // Whether the display name should be displayed in the Sign Up page.
-    //   requireDisplayName: true,
-    // },
+    {
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      // Whether the display name should be displayed in the Sign Up page.
+      requireDisplayName: true,
+    },
 
     // {
     //   provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
