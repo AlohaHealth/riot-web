@@ -25,11 +25,11 @@ module.exports = React.createClass({
             <i />
             <span className="item-label">My Matched Trials</span>
           </li>
-          <li>
+          <li data-action="view_my_clinical_consent" onClick={this.onClinicalTrialListClick}>
             <i />
             <span className="item-label">My Consent</span>
           </li>
-          <li>
+          <li data-action="view_my_clinical_profile" onClick={this.onClinicalTrialListClick}>
             <i />
             <span className="item-label">My Clinical Profile</span>
           </li>
