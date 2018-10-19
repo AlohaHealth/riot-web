@@ -29,6 +29,22 @@
   margin: 1em 0 1.5em 0;
 }
 
+.aloha-my-clinical-trial-list {
+  .aloha-left-nav {
+    border: 0;
+  }
+  .mx_RoomSubList_label {
+    background-color: transparent;
+    color: $accent-color;
+    font-weight: 400;
+    font-size: 18px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border: 0;
+    text-transform: none;
+  }
+}
+
 .aloha-whatnext {
   flex-basis: 50%;
   flex-grow: 0;
@@ -64,9 +80,7 @@
       &:first-child {
         i {
           display: inline-block;
-          background: transparent
-            url(../../themes/AlohaBlue/img/aloha-logo-transparent.png) -20px -11px
-            no-repeat;
+          background: transparent url(../../themes/AlohaBlue/img/aloha-logo-transparent.png) -20px -11px no-repeat;
           background-size: 60px 44px;
           width: 28px;
           height: 23px;
@@ -82,8 +96,8 @@
           vertical-align: middle;
           padding: 0 0.2em 0 0;
           &:before {
-            font-family: "Font Awesome\ 5 Free";
-            content: "\f3a5";
+            font-family: 'Font Awesome\ 5 Free';
+            content: '\f3a5';
           }
         }
       }
@@ -96,18 +110,18 @@
           vertical-align: middle;
           padding: 0 0.2em 0 0;
           &:before {
-            content: "\f005";
-            font-family: "Font Awesome\ 5 Free";
+            content: '\f005';
+            font-family: 'Font Awesome\ 5 Free';
           }
         }
       }
       span {
-        &:last-child {
+        &:nth-child(3) {
           &:before {
-            content: "\0028";
+            content: '\0028';
           }
           &:after {
-            content: "\0029";
+            content: '\0029';
           }
         }
       }

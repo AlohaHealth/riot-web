@@ -10,19 +10,21 @@
  * Aloha's overrides `matrix-react-sdk` components for non-color properties,
  * eg. width, height, margin, padding, etc.
  */
- @import "_AppsDrawer.scss";
- @import "_BaseAvatar.scss";
- @import "_LeftPanel.scss";
- @import "_MatrixToolbar.scss";
- @import "_RoomSubList.scss";
- @import "_RoomTile.scss";
- @import "_SearchBox.scss";
- @import "_FilePanel.scss";
- @import "_EventTile.scss";
- 
- /*
-  * Aloha's custom components
-  */
- @import "_common.scss";
- @import "AlohaLogin.scss";
- @import "AlohaHomepage.scss";
+@import "_AppsDrawer.scss";
+@import "_BaseAvatar.scss";
+@import "_LeftPanel.scss";
+@import "_MatrixToolbar.scss";
+@import "_RoomSubList.scss";
+@import "_RoomTile.scss";
+@import "_SearchBox.scss";
+@import "_FilePanel.scss";
+@import "_EventTile.scss";
+
+
+/*
+ * Aloha's custom components
+ */
+@import "_common.scss";
+@import "AlohaLogin.scss";
+@import "AlohaLeftNav.scss";
+@import "AlohaHomepage.scss";
