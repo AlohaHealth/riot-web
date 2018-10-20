@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" style="height: 100%;">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Weheal.org</title>
     <link rel="apple-touch-icon" sizes="57x57" href="vector-icons/apple-touch-icon-57x57.png">
@@ -21,20 +22,22 @@
     <meta name="msapplication-config" content="vector-icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
     <meta property="og:image" content="<%= htmlWebpackPlugin.options.vars.og_image_url %>" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css" integrity="sha384-BzCy2fixOYd0HObpx3GMefNqdbA7Qjcc91RgYeDjrHTIEXqiF00jKvgQG0+zY/7I" crossorigin="anonymous">
     <% for (var i=0; i < htmlWebpackPlugin.files.css.length; i++) {
         var file = htmlWebpackPlugin.files.css[i];
         var match = file.match(/^bundles\/.*?\/theme-(.*)\.css$/);
         if (match) {
             var title = match[1].charAt(0).toUpperCase() + match[1].slice(1);
         %>
-           <link rel="stylesheet" disabled="disabled" title="<%= title %>" href="<%= file %>">
-        <% } else { %>
-           <link rel="stylesheet" href="<%= file %>">
-        <% }
+    <link rel="stylesheet" disabled="disabled" title="<%= title %>" href="<%= file %>">
+    <% } else { %>
+    <link rel="stylesheet" href="<%= file %>">
+    <% }
     } %>
-  </head>
-  <body style="height: 100%;">
+</head>
+
+<body style="height: 100%;">
     <section id="matrixchat" style="height: 100%;"></section>
     <noscript>Sorry, Riot requires JavaScript to be enabled.</noscript> <!-- TODO: Translate this? -->
     <% for (var i=0; i < htmlWebpackPlugin.files.js.length; i++) {
@@ -50,16 +53,16 @@
         // into the main page
         if (_.endsWith(htmlWebpackPlugin.files.js[i], 'indexeddb-worker.js')) {
             %>
-            <script>
-                window.vector_indexeddb_worker_script = '<%= htmlWebpackPlugin.files.js[i] %>';
-            </script>
-            <%
+    <script>
+        window.vector_indexeddb_worker_script = '<%= htmlWebpackPlugin.files.js[i] %>';
+    </script>
+    <%
             continue;
         }
         %>
-        <script src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
+    <script src="<%= htmlWebpackPlugin.files.js[i] %>"></script>
     <% } %>
-    <img src="img/warning.svg" width="24" height="23" style="visibility: hidden; position: absolute; top: 0px; left: 0px;"/>
+    <img src="img/warning.svg" width="24" height="23" style="visibility: hidden; position: absolute; top: 0px; left: 0px;" />
     <audio id="messageAudio">
         <source src="media/message.ogg" type="audio/ogg" />
         <source src="media/message.mp3" type="audio/mpeg" />
@@ -82,6 +85,11 @@
     </audio>
     <audio id="remoteAudio"></audio>
     <!-- let CSS themes pass constants to the app -->
-    <div id="mx_theme_accentColor"></div><div id="mx_theme_secondaryAccentColor"></div><div id="mx_theme_tertiaryAccentColor"></div>
-  </body>
+    <div id="mx_theme_accentColor"></div>
+    <div id="mx_theme_secondaryAccentColor" />
+    </div>
+    <div id="mx_theme_tertiaryAccentColor" />
+    </div>
+</body>
+
 </html>

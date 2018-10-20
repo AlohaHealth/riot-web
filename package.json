@@ -60,6 +60,7 @@
     "test-multi": "karma start"
   },
   "dependencies": {
+    "@alohahealth/matrix-react-sdk": "0.14.1",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
     "bluebird": "^3.5.2",
@@ -70,8 +71,7 @@
     "gemini-scrollbar": "github:matrix-org/gemini-scrollbar#b302279",
     "gfm.css": "^1.1.2",
     "highlight.js": "^9.0.0",
-    "matrix-js-sdk": "0.12.0",
-    "@alohahealth/matrix-react-sdk": "0.14.1",
+    "matrix-js-sdk": "0.11.1",
     "modernizr": "^3.6.0",
     "prop-types": "^15.6.2",
     "react": "^15.6.0",
