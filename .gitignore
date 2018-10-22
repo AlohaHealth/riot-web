@@ -1,3 +1,9 @@
+### begin aloha
+/.env
+/.nvmrc
+/COMMIT_MSG
+### end aloha
+
 /build
 /cert.pem
 /dist
@@ -20,4 +26,3 @@ electron/pub
 /config.local*.json
 /src/component-index.js
 /.tmp
-.env

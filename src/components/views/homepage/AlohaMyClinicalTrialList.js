@@ -3,8 +3,6 @@ import sdk from 'matrix-react-sdk/lib/index'
 import PropTypes from 'prop-types'
 import {_t} from 'matrix-react-sdk/lib/languageHandler'
 
-// @AHN
-import AlohaList from 'aloha-react-sdk/lib/AlohaList'
 import AlohaClinicalTrialsNav from '../../structures/AlohaClinicalTrialsNav'
 
 module.exports = React.createClass({
