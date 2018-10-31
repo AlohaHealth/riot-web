@@ -30,7 +30,7 @@ module.exports = React.createClass({
       }
     `
     const AlohaClinicalTrialListWithData = graphql(ClinicalTrialQuery, {
-      name: 'ClinicalTrial',
+      name: 'ClinicalTrialData',
     })(AlohaClinicalTrialList)
 
     return (
