@@ -7,7 +7,6 @@ import {ApolloProvider, Query, graphql} from 'react-apollo'
 import {ApolloClient, HttpLink, InMemoryCache} from 'apollo-boost'
 import gql from 'graphql-tag'
 
-// import apolloClient from "../../aloha/tenant_api/apolloClient"
 import AlohaClinicalTrialList from '@alohahealth/aloha-react-sdk/lib/AlohaClinicalTrialList'
 
 module.exports = React.createClass({
