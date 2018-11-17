@@ -32,12 +32,20 @@ module.exports = React.createClass({
           matched_trials {
             trial {
               id
-              public_title
+              brief_title
               brief_summary
-              status
-              study_phase
+              conditions
+              overall_status
+              phase
               locations {
-                name
+                facility {
+                  name
+                  address {
+                    city
+                    state
+                    country
+                  }
+                }
               }
             }
           }
