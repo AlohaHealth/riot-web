@@ -26,9 +26,7 @@ import { _t } from 'matrix-react-sdk/lib/languageHandler';
 import sdk from 'matrix-react-sdk/lib/index';
 
 import AlohaWelcomeBanner from '../views/homepage/AlohaWelcomeBanner';
-import AlohaMyClinicalTrialList from '../views/homepage/AlohaMyClinicalTrialList';
 import AlohaWhatNext from '../views/homepage/AlohaWhatNext';
-import AlohaQuickLinks from '../views/homepage/AlohaQuickLinks';
 
 class AlohaHomePage extends HomePage {
     static displayName = 'AlohaHomePage';
@@ -50,11 +48,7 @@ class AlohaHomePage extends HomePage {
                 <div className="mx_HomePage_body">
                     <div className="mx_HomePage_container">
                         <AlohaWelcomeBanner />
-                        <div className="aloha-even-two-column clearfix">
-                            <AlohaWhatNext />
-                            <AlohaMyClinicalTrialList />
-                        </div>
-                        <AlohaQuickLinks />
+                        <AlohaWhatNext />
                     </div>
                 </div>
             </GeminiScrollbarWrapper>
