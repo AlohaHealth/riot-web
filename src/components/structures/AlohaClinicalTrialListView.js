@@ -27,7 +27,7 @@ module.exports = React.createClass({
     })
 
     const ClinicalTrialQuery = gql`
-      query ($matrixUserId: String!) {
+      query ($matrixUserId: ID!) {
         user(userId: $matrixUserId) {
           matched_trials {
             trial {
