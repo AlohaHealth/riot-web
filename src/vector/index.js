@@ -62,6 +62,10 @@ import {getVectorConfig} from './getconfig';
 
 let lastLocationHashSet = null;
 
+// Disable warnings for now: we use deprecated bluebird functions
+// and need to migrate, but they spam the console with warnings.
+Promise.config({warnings: false});
+
 function initRageshake() {
     rageshake.init().then(() => {
         console.log("Initialised rageshake: See https://bugs.chromium.org/p/chromium/issues/detail?id=583193 to fix line numbers on Chrome.");
@@ -175,37 +179,35 @@ function makeRegistrationUrl(params) {
 }
 
 function getConfig(configJsonFilename) {
-    let deferred = Promise.defer();
-
-    request(
-        { method: "GET", url: configJsonFilename },
-        (err, response, body) => {
-            if (err || response.status < 200 || response.status >= 300) {
-                // Lack of a config isn't an error, we should
-                // just use the defaults.
-                // Also treat a blank config as no config, assuming
-                // the status code is 0, because we don't get 404s
-                // from file: URIs so this is the only way we can
-                // not fail if the file doesn't exist when loading
-                // from a file:// URI.
-                if (response) {
-                    if (response.status == 404 || (response.status == 0 && body == '')) {
-                        deferred.resolve({});
+    return new Promise(function(resolve, reject) {
+        request(
+            { method: "GET", url: configJsonFilename },
+            (err, response, body) => {
+                if (err || response.status < 200 || response.status >= 300) {
+                    // Lack of a config isn't an error, we should
+                    // just use the defaults.
+                    // Also treat a blank config as no config, assuming
+                    // the status code is 0, because we don't get 404s
+                    // from file: URIs so this is the only way we can
+                    // not fail if the file doesn't exist when loading
+                    // from a file:// URI.
+                    if (response) {
+                        if (response.status == 404 || (response.status == 0 && body == '')) {
+                            resolve({});
+                        }
                     }
+                    reject({err: err, response: response});
+                    return;
                 }
-                deferred.reject({err: err, response: response});
-                return;
-            }
 
-            // We parse the JSON ourselves rather than use the JSON
-            // parameter, since this throws a parse error on empty
-            // which breaks if there's no config.json and we're
-            // loading from the filesystem (see above).
-            deferred.resolve(JSON.parse(body));
-        }
-    );
-
-    return deferred.promise;
+                // We parse the JSON ourselves rather than use the JSON
+                // parameter, since this throws a parse error on empty
+                // which breaks if there's no config.json and we're
+                // loading from the filesystem (see above).
+                resolve(JSON.parse(body));
+            },
+        );
+    });
 }
 
 function onTokenLoginCompleted() {
@@ -287,12 +289,23 @@ async function loadApp() {
                 // in case the Tinter.tint() in MatrixChat fires before the
                 // CSS has actually loaded (which in practice happens)...
 
-                // FIXME: we should probably block loading the app or even
-                // showing a spinner until the theme is loaded, to avoid
-                // flashes of unstyled content.
-                a.onload = () => {
+                // This if fixes Tinter.setTheme to not fire on Firefox
+                // in case it is the first time loading Riot.
+                // `InstallTrigger` is a Object which only exists on Firefox
+                // (it is used for their Plugins) and can be used as a
+                // feature check. 
+                // Firefox loads css always before js. This is why we dont use
+                // onload or it's EventListener as thoose will never trigger.
+                if (typeof InstallTrigger !== 'undefined') {
                     Tinter.setTheme(theme);
-                };
+                } else {
+                    // FIXME: we should probably block loading the app or even
+                    // showing a spinner until the theme is loaded, to avoid
+                    // flashes of unstyled content.
+                    a.onload = () => {
+                        Tinter.setTheme(theme);
+                    };
+                }
             } else {
                 // Firefox requires this to not be done via `setAttribute`
                 // or via HTML.

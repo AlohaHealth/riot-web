@@ -1,20 +1,22 @@
-import React from 'react';
-import sdk from 'matrix-react-sdk/lib/index';
-import PropTypes from 'prop-types';
-import { _t } from 'matrix-react-sdk/lib/languageHandler';
+import React from 'react'
+import sdk from 'matrix-react-sdk/lib/index'
+import PropTypes from 'prop-types'
+import {_t} from 'matrix-react-sdk/lib/languageHandler'
+
+import AlohaClinicalTrialsNav from '../../structures/AlohaClinicalTrialsNav'
 
 module.exports = React.createClass({
-
-    render: function() {
-        return (
-            <div className="aloha-my-clinical-trial-list clearfix">
-                <h2>My Clinical Trial Lists</h2>
-                <ul>
-                    <li><i className="aloha-matched-trials"></i> My Matched Trials (0)</li>
-                    <li><i className="fas fa-globe"></i> All Enrolling Trials (275)</li>
-                    <li><i className="fas fa-star"></i> My Favorite Trials (8)</li>
-                </ul>
-            </div>
-        );
-    }
-});
+  render: function() {
+    const sampleData = [
+      {item: 1, label: 'My Matched Trials', count: 15},
+      {item: 1, label: 'All Enrolling Trials', count: 275},
+      {item: 3, label: 'My Favorite Trials', count: 8},
+    ]
+    return (
+      <div className="aloha-my-clinical-trial-list clearfix">
+        {/*<AlohaList data={sampleData} />*/}
+        <AlohaClinicalTrialsNav />
+      </div>
+    )
+  },
+})

@@ -1,3 +1,9 @@
+### begin aloha
+/.env
+/.nvmrc
+/COMMIT_MSG
+### end aloha
+
 /build
 /cert.pem
 /dist
