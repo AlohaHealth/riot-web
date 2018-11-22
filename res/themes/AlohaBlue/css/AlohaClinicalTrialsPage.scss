@@ -53,14 +53,14 @@
     background-color: #f6f9fc;
     border-radius: 5px 5px 0 0;
   }
-  .no-matched-trials ul {
-    margin: 0;
-    padding: 0 0 2em 3em;
-    font-size: 1em;
+  .no-matched-trials section {
+    padding: 0 1em;
   }
-  .no-matched-trials ul li {
-    line-height: 2;
-    font-size: 0.875em;
+  .no-matched-trials a,
+  .no-matched-trials a:link,
+  .no-matched-trials a:visited,
+  .no-matched-trials a:hover {
+    color: #0070c9;
   }
 
   .matched-trials {
