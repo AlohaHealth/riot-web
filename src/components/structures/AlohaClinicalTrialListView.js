@@ -60,7 +60,7 @@ module.exports = React.createClass({
 
     return (
       <div className="aloha-matched-list-view clearfix">
-        <h2 className="clearfix">My Clinical Trial List</h2>
+        <h1 className="clearfix">My Clinical Trial List</h1>
         <ApolloProvider client={apolloClient}>
           <AlohaClinicalTrialListWithData />
         </ApolloProvider>
