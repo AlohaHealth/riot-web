@@ -6,9 +6,15 @@
   margin: 0 1em;
   padding: 0 0 1.5em;
   border-bottom: 1px solid rgb(186, 221, 246, 0.8);
+
   .mx_RoomSubList_label {
+    display: inline-block;
+    width: auto;
     margin: 0;
     padding: 0;
+    .collapsed & {
+      display: none;
+    }
   }
 }
 
@@ -20,6 +26,7 @@
   list-style: none;
   margin: 0;
   padding: 0.5em 0 0;
+
   li {
     margin: 0;
     padding: 2px 6px 3px 1px;
@@ -32,9 +39,21 @@
     cursor: pointer;
     color: $roomtile-name-color;
 
+    .collapsed & {
+      width: auto;
+    }
+
     &:hover {
       color: $accent-color;
     }
+
+    span {
+      display: inline-block;
+      .collapsed & {
+        display: none;
+      }
+    }
+
 
     &:first-child {
       i {

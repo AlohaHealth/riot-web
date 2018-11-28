@@ -21,18 +21,20 @@ module.exports = React.createClass({
       <div className="aloha-left-nav">
         <h2 className="mx_RoomSubList_label">Clinical Trials</h2>
         <ul className="aloha-clinical-trial-nav">
-          <li data-action="view_my_clinical_trials" onClick={this.onClinicalTrialListClick}>
+          <li data-action="view_my_clinical_trials" onClick={this.onClinicalTrialListClick} title="My Matched Trials">
             <i />
             <span className="item-label">My Matched Trials</span>
           </li>
-          <li data-action="view_my_clinical_consent" onClick={this.onClinicalTrialListClick}>
+          {/*
+          <li data-action="view_my_clinical_consent" onClick={this.onClinicalTrialListClick} title="My Consent">
             <i />
             <span className="item-label">My Consent</span>
           </li>
-          <li data-action="view_my_clinical_profile" onClick={this.onClinicalTrialListClick}>
+          <li data-action="view_my_clinical_profile" onClick={this.onClinicalTrialListClick} title="My Clinical Profile">
             <i />
             <span className="item-label">My Clinical Profile</span>
           </li>
+          */}
         </ul>
       </div>
     )
