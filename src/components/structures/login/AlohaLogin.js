@@ -77,7 +77,7 @@ module.exports = React.createClass({
             username: "",
             phoneCountry: null,
             phoneNumber: "",
-            currentFlow: "m.login.jwt",
+            currentFlow: "m.login.auth0",
         };
     },
 
@@ -87,7 +87,7 @@ module.exports = React.createClass({
         // map from login step type to a function which will render a control
         // letting you do that login type
         this._stepRendererMap = {
-            'm.login.jwt': this._renderAuth0Step,
+            'm.login.auth0': this._renderAuth0Step,
             // 'm.login.password': this._renderPasswordStep,
             'm.login.cas': this._renderCasStep,
         };
@@ -195,6 +195,31 @@ module.exports = React.createClass({
       this._loginLogic.redirectToCas();
     },
 
+    // AHN Auth0 Login
+    onAuth0MatrixLogin: function() {
+      console.log(`Going from Auth0Login component to Matrix React SKD Login....`);
+      const self = this;
+      self.setState({
+          errorText: null,
+          loginIncorrect: false,
+      });
+
+      this._loginLogic.loginMatrixViaAuth0().then(function(data) {
+          self.props.onLoggedIn(data);
+      }, function(error) {
+          let errorText;
+          if (error.httpStatus === 403) {
+              errorText = _t("Auth0 access is disabled on this Home Server.");
+          } else {
+              errorText = self._errorTextFromError(error);
+          }
+          self.setState({
+              errorText: errorText,
+              loginIncorrect: false,
+          });
+      }).done();
+    },
+
     _onLoginAsGuestClick: function() {
         const self = this;
         self.setState({
@@ -273,9 +298,6 @@ module.exports = React.createClass({
             defaultDeviceDisplayName: this.props.defaultDeviceDisplayName,
         });
         this._loginLogic = loginLogic;
-
-        console.log(`Login Logic ...  ${this._loginLogic}`);
-        console.log(this._loginLogic);
 
         this.setState({
             enteredHomeserverUrl: hsUrl,
@@ -418,10 +440,11 @@ module.exports = React.createClass({
         );
     },
 
+    // AHN Auth0 Login
     _renderAuth0Step: function() {
         const Auth0Login = sdk.getComponent('login.Auth0Login');
         return (
-            <Auth0Login />
+            <Auth0Login onAuth0MatrixLogin={this.onAuth0MatrixLogin} />
         );
     },
 
@@ -475,11 +498,7 @@ module.exports = React.createClass({
         }
 
         const LanguageSelector = sdk.getComponent('structures.login.LanguageSelector');
-        
-        console.log("------------------- Login current flow ?------------------");
-        console.log(this.state.currentFlow);
 
-        console.log(`MatrixChat homeserver ${this.props.defaultHsUrl}`);
         return (
             <LoginPage>
                 <div className="mx_Login_box">

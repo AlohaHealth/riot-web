@@ -15,41 +15,82 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import sdk from 'matrix-react-sdk/lib/index';
-import { _t } from 'matrix-react-sdk/lib/languageHandler';
-import SdkConfig from 'matrix-react-sdk/lib/SdkConfig';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
+import sdk from 'matrix-react-sdk/lib/index'
+import {_t} from 'matrix-react-sdk/lib/languageHandler'
+import SdkConfig from 'matrix-react-sdk/lib/SdkConfig'
 
-import Auth from '../../../aloha/auth/Auth.js';
+import Auth from '../../../aloha/auth/Auth.js'
 
-const auth = new Auth();
+const auth = new Auth()
 
 /**
  * A pure UI component which displays a Auth0 login button form.
  */
- module.exports = React.createClass({
-     displayName: 'Auth0Login',
 
-     _login: function() {
-        console.log("----------- LoginAuth0 Button --------------");
-        auth.login();
+class Auth0Login extends React.Component {
+  static displayName = 'Auth0Login'
 
-     },
+  static defaultProps = {
+    onAuth0MatrixLogin: function() {},
+    initialAuth0: null,
+  }
 
-     _logout: function() {
-        // auth.logout();
-     },
+  constructor(props) {
+    super(props)
+    this.state = {
+      isAuth0Authenticated: this.props.initialAuth0,
+    }
 
-     render: function() {
-         // const { isAuthenticated } = this.props.auth;
-         auth.handleAuthentication();
-         return (
-             <div>
-                <button onClick={this._login}>Sign in with Auth0</button>
-             </div>
-         );
-     },
+    this.onAuth0MatrixLogin = this.onAuth0MatrixLogin.bind(this)
+  }
 
- });
+  componentDidMount() {
+    auth.handleAuthentication()
+    this.timerID = setTimeout(() => {
+      const ahn_token_expires = localStorage.getItem('ahn_expires_at')
+      if (ahn_token_expires !== null) {
+        this.onAuth0MatrixLogin(ahn_token_expires)
+      }
+    }, 1000)
+  }
+
+  onAuth0MatrixLogin(auth0Response) {
+    this.setState({
+      isAuth0Authenticated: auth0Response,
+    })
+    this.props.onAuth0MatrixLogin(auth0Response)
+  }
+
+  _login() {
+    auth.login()
+  }
+
+  _logout() {
+    // auth.logout();
+  }
+
+  render() {
+    const Loader = sdk.getComponent('elements.Spinner')
+    const isAuthenticated = this.state.isAuth0Authenticated !== null ? true : false
+
+    return (
+      <div>
+        {!isAuthenticated && <button onClick={this._login}>Sign in with Auth0</button>}
+        {isAuthenticated && (
+          <div className="mx_Login_loader">
+            <Loader />
+          </div>
+        )}
+      </div>
+    )
+  }
+}
+
+Auth0Login.propTypes = {
+  onAuth0MatrixLogin: PropTypes.func,
+}
+
+module.exports = Auth0Login
