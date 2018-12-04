@@ -4,7 +4,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'aloha-dev.auth0.com',
     clientID: 'Z8fDjG8dkxigmdp5v4QwTzOw__zjiPQI',
-    redirectUri: 'http://localhost:8080',
+    redirectUri: 'https://auth0-web.dev.aloha.cloud',
     responseType: 'token id_token',
     scope: 'openid profile',
   })
