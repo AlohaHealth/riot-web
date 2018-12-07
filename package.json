@@ -74,7 +74,6 @@
         "draft-js": "^0.11.0-alpha",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "favico.js": "^0.3.10",
-        "fsevents": "^2.0.1",
         "gemini-scrollbar": "github:matrix-org/gemini-scrollbar#b302279",
         "gfm.css": "^1.1.2",
         "graphql": "^14.0.2",
@@ -156,6 +155,7 @@
         "webpack-dev-server": "^3.1.9"
     },
     "optionalDependencies": {
+        "fsevents": "^2.0.1",
         "olm": "https://matrix.org/packages/npm/olm/olm-2.2.1.tgz"
     },
     "build": {
