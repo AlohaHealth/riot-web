@@ -197,7 +197,7 @@ module.exports = React.createClass({
 
     // AHN Auth0 Login
     onAuth0MatrixLogin: function() {
-      console.log(`Going from Auth0Login component to Matrix React SKD Login....`);
+      console.log(`Logging in Matrix with Auth0 ...`);
       const self = this;
       self.setState({
           errorText: null,
@@ -481,7 +481,7 @@ module.exports = React.createClass({
         // FIXME: remove status.im theme tweaks
         const theme = SettingsStore.getValue("theme");
         if (theme !== "status") {
-            header = <h2>{ _t('Sign in') } { loader }</h2>;
+            header = <h2>{ _t('Sign in to get started') } { loader }</h2>;
         } else {
             if (!this.state.errorText) {
                 header = <h2>{ _t('Sign in to get started') } { loader }</h2>;
@@ -508,12 +508,14 @@ module.exports = React.createClass({
                         { errorTextSection }
                         { this.componentForStep(this.state.currentFlow) }
                         { serverConfig }
-                        <a className="mx_Login_create" onClick={this.props.onRegisterClick} href="#">
-                            { _t('Create an account') }
-                        </a>
+                        {/*
+                          <a className="mx_Login_create" onClick={this.props.onRegisterClick} href="#">
+                              { _t('Create an account') }
+                          </a>
+                        */}
                         { loginAsGuestJsx }
                         <LanguageSelector />
-                        <LoginFooter />
+                        {/* <LoginFooter /> */}
                     </div>
                 </div>
             </LoginPage>

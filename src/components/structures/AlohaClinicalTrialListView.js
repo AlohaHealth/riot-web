@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import {_t} from 'matrix-react-sdk/lib/languageHandler'
 
 import {ApolloProvider, Query, graphql} from 'react-apollo'
-// import {ApolloClient, HttpLink, InMemoryCache} from 'apollo-boost'
 import {ApolloClient} from 'apollo-client'
 import {HttpLink} from 'apollo-link-http'
 import {setContext} from 'apollo-link-context'
@@ -32,7 +31,6 @@ module.exports = React.createClass({
     const authLink = setContext((_, {headers}) => {
       // get the authentication token from local storage if it exists
       const token = localStorage.getItem('ahn_id_token')
-      console.log(token)
       // return the headers to the context so httpLink can read them
       return {
         headers: {
@@ -46,11 +44,6 @@ module.exports = React.createClass({
       link: authLink.concat(httpLink),
       cache: new InMemoryCache(),
     })
-
-    // const apolloClient = new ApolloClient({
-    //   link: httpLink,
-    //   cache: new InMemoryCache(),
-    // })
 
     const ClinicalTrialQuery = gql`
       query($matrixUserId: ID!) {

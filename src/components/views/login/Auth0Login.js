@@ -50,9 +50,9 @@ class Auth0Login extends React.Component {
   componentDidMount() {
     auth.handleAuthentication()
     this.timerID = setTimeout(() => {
-      const ahn_token_expires = localStorage.getItem('ahn_expires_at')
-      if (ahn_token_expires !== null) {
-        this.onAuth0MatrixLogin(ahn_token_expires)
+      const ahnIsAuthenticated = auth.isAuthenticated()
+      if (ahnIsAuthenticated) {
+        this.onAuth0MatrixLogin(ahnIsAuthenticated)
       }
     }, 1000)
   }
@@ -61,13 +61,17 @@ class Auth0Login extends React.Component {
     this.setState({
       isAuth0Authenticated: auth0Response,
     })
-    this.props.onAuth0MatrixLogin(auth0Response)
+    this.props.onAuth0MatrixLogin()
   }
 
   _login() {
     auth.login()
   }
 
+  /*
+   * At the moment, we fall back on Matrix to manage the session
+   * and Matrix session timeout is set the same as Auth0 exp
+   */
   _logout() {
     // auth.logout();
   }
@@ -77,8 +81,8 @@ class Auth0Login extends React.Component {
     const isAuthenticated = this.state.isAuth0Authenticated !== null ? true : false
 
     return (
-      <div>
-        {!isAuthenticated && <button onClick={this._login}>Sign in with Auth0</button>}
+      <div className="ahn-sign-in">
+        {!isAuthenticated && <button className="mx_UserSettings_button" onClick={this._login}>Sign in</button>}
         {isAuthenticated && (
           <div className="mx_Login_loader">
             <Loader />

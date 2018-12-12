@@ -440,7 +440,7 @@ const LoggedInView = React.createClass({
 
             case PageTypes.AlohaMyClinicalTrials:
                 page_element = <AlohaClinicalTrialListView
-                    alohaTenantAPI={this.props.config.alohaTenantAPI}/>
+                    alohaTenantAPI={this.props.config.alohaTenantAPI} />
                 break;
 
             case PageTypes.AlohaMyClinicalProfile:
