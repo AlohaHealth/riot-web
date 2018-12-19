@@ -82,7 +82,7 @@ class Auth0Login extends React.Component {
 
     return (
       <div className="ahn-sign-in">
-        {!isAuthenticated && <button className="mx_UserSettings_button" onClick={this._login}>Sign in</button>}
+        {!isAuthenticated && <button className="mx_UserSettings_button" id="ahn-auth0-login" onClick={this._login}>Sign in</button>}
         {isAuthenticated && (
           <div className="mx_Login_loader">
             <Loader />

@@ -1,3 +1,5 @@
+// MXORIGIN: https://github.com/matrix-org/matrix-react-sdk/blob/master/src/components/structures/login/Login.js
+
 /*
 Copyright 2015, 2016 OpenMarket Ltd
 Copyright 2017 Vector Creations Ltd
