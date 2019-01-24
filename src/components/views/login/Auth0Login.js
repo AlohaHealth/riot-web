@@ -21,10 +21,7 @@ import classNames from 'classnames'
 import sdk from 'matrix-react-sdk/lib/index'
 import {_t} from 'matrix-react-sdk/lib/languageHandler'
 import SdkConfig from 'matrix-react-sdk/lib/SdkConfig'
-
-import Auth from '../../../aloha/auth/Auth.js'
-
-const auth = new Auth()
+import auth0 from 'auth0-js'
 
 /**
  * A pure UI component which displays a Auth0 login button form.
@@ -42,19 +39,18 @@ class Auth0Login extends React.Component {
     super(props)
     this.state = {
       isAuth0Authenticated: this.props.initialAuth0,
+      Auth0Config: this.props.auth0AHNConfig
     }
 
     this.onAuth0MatrixLogin = this.onAuth0MatrixLogin.bind(this)
+    this.auth = this.auth.bind(this)
+    this.login = this.login.bind(this)
+    this.handleAuthentication = this.handleAuthentication.bind(this);
+    this.isAuthenticated = this.isAuthenticated.bind(this);
   }
 
-  componentDidMount() {
-    auth.handleAuthentication()
-    this.timerID = setTimeout(() => {
-      const ahnIsAuthenticated = auth.isAuthenticated()
-      if (ahnIsAuthenticated) {
-        this.onAuth0MatrixLogin(ahnIsAuthenticated)
-      }
-    }, 1000)
+  auth() {
+    return new auth0.WebAuth(this.state.Auth0Config)
   }
 
   onAuth0MatrixLogin(auth0Response) {
@@ -64,16 +60,57 @@ class Auth0Login extends React.Component {
     this.props.onAuth0MatrixLogin()
   }
 
-  _login() {
-    auth.login()
+  login() {
+    this.auth().authorize({
+      prompt: 'login'
+    });
   }
 
   /*
    * At the moment, we fall back on Matrix to manage the session
    * and Matrix session timeout is set the same as Auth0 exp
    */
-  _logout() {
-    // auth.logout();
+  logout() {
+    // Clear access token and ID token from local storage
+    // localStorage.removeItem('ahn_access_token');
+    // localStorage.removeItem('ahn_id_token');
+    // localStorage.removeItem('ahn_expires_at');
+  }
+
+  handleAuthentication() {
+    this.auth().parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken && authResult.idToken) {
+        this.setSession(authResult);
+        //history.replace('/home');
+      } else if (err) {
+        //history.replace('/home');
+        console.log(err);
+        alert(`Error: ${err.error}. Check the console for further details.`);
+      }
+    });
+  }
+
+  setSession(authResult) {
+    // Set the time that the id token will expire at
+    let idTokenExp = JSON.stringify(authResult.idTokenPayload.exp);
+    localStorage.setItem('ahn_access_token', authResult.accessToken);
+    localStorage.setItem('ahn_id_token', authResult.idToken);
+    localStorage.setItem('ahn_expires_at', idTokenExp);
+  }
+
+  isAuthenticated() {
+    let idTokenExp = JSON.parse(localStorage.getItem('ahn_expires_at')) * 1000;
+    return new Date().getTime() < idTokenExp;
+  }
+
+  componentDidMount() {
+    this.handleAuthentication()
+    this.timerID = setTimeout(() => {
+      const ahnIsAuthenticated = this.isAuthenticated()
+      if (ahnIsAuthenticated) {
+        this.onAuth0MatrixLogin(ahnIsAuthenticated)
+      }
+    }, 1000)
   }
 
   render() {
@@ -82,7 +119,7 @@ class Auth0Login extends React.Component {
 
     return (
       <div className="ahn-sign-in">
-        {!isAuthenticated && <button className="mx_UserSettings_button" id="ahn-auth0-login" onClick={this._login}>Sign in</button>}
+        {!isAuthenticated && <button className="mx_UserSettings_button" id="ahn-auth0-login" onClick={this.login}>Sign in</button>}
         {isAuthenticated && (
           <div className="mx_Login_loader">
             <Loader />
@@ -95,6 +132,7 @@ class Auth0Login extends React.Component {
 
 Auth0Login.propTypes = {
   onAuth0MatrixLogin: PropTypes.func,
+  auth0AHNConfig: PropTypes.object
 }
 
 module.exports = Auth0Login

@@ -61,7 +61,7 @@
     },
     "dependencies": {
         "@alohahealth/aloha-react-sdk": "0.1.8",
-        "@alohahealth/matrix-react-sdk": "0.14.2-aloha.r2",
+        "@alohahealth/matrix-react-sdk": "0.14.2-aloha.r3",
         "apollo-cache-inmemory": "^1.3.11",
         "apollo-client": "^2.4.7",
         "apollo-link-context": "^1.0.10",
