@@ -1,3 +1,5 @@
+// MXORIGIN: https://github.com/matrix-org/matrix-react-sdk/blob/master/src/components/structures/LoggedInView.js
+
 /*
 Copyright 2015, 2016 OpenMarket Ltd
 Copyright 2017 Vector Creations Ltd
@@ -440,7 +442,7 @@ const LoggedInView = React.createClass({
 
             case PageTypes.AlohaMyClinicalTrials:
                 page_element = <AlohaClinicalTrialListView
-                    alohaTenantAPI={this.props.config.alohaTenantAPI}/>
+                    alohaTenantAPI={this.props.config.alohaTenantAPI} />
                 break;
 
             case PageTypes.AlohaMyClinicalProfile:
