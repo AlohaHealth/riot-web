@@ -445,8 +445,10 @@ module.exports = React.createClass({
     // AHN Auth0 Login
     _renderAuth0Step: function() {
         const Auth0Login = sdk.getComponent('login.Auth0Login');
+        const Auth0Config = SdkConfig.get()['auth0'];
+
         return (
-            <Auth0Login onAuth0MatrixLogin={this.onAuth0MatrixLogin} />
+            <Auth0Login onAuth0MatrixLogin={this.onAuth0MatrixLogin} auth0AHNConfig={Auth0Config} />
         );
     },
 
