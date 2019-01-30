@@ -14,6 +14,12 @@ import gql from 'graphql-tag'
 import AlohaClinicalTrialList from '@alohahealth/aloha-react-sdk/lib/AlohaClinicalTrialList'
 
 module.exports = React.createClass({
+  // This is a temporary fix for the component always getting re-rendered every time AlohaLoggedInView.onSync is called
+  // TODO: (adam) Does this class inherit/acquire shouldComponentUpdate from AlohaLoggedInView? Is this the best approach?
+  shouldComponentUpdate: function () {
+    return false
+  },
+
   render: function() {
     /*
      * Retrieve user's matched clinical trials
