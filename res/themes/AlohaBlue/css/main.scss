@@ -23,6 +23,7 @@
  * Aloha's custom components
  */
 @import '_common.scss';
+@import '../../../../node_modules/@alohahealth/aloha-react-sdk/lib/ahn-sdk.css';
 @import 'AlohaLogin.scss';
 @import 'AlohaLeftNav.scss';
 @import 'AlohaHomepage.scss';

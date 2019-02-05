@@ -1,3 +1,4 @@
+// MXORIGIN: https://github.com/matrix-org/matrix-react-sdk/blob/master/src/components/views/LoginHeader.js
 /*
 Copyright 2015, 2016 OpenMarket Ltd
 
