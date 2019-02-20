@@ -2,7 +2,7 @@
     "name": "riot-web",
     "productName": "Riot",
     "main": "electron_app/src/electron-main.js",
-    "version": "0.17.3-aloha.r3",
+    "version": "0.17.3-aloha.r3.1",
     "description": "A feature-rich client for Matrix.org",
     "author": "New Vector Ltd.",
     "repository": {
@@ -60,7 +60,7 @@
         "test-multi": "karma start"
     },
     "dependencies": {
-        "@alohahealth/aloha-react-sdk": "0.1.8",
+        "@alohahealth/aloha-react-sdk": "0.1.9",
         "@alohahealth/matrix-react-sdk": "0.14.2-aloha.r3",
         "apollo-cache-inmemory": "^1.3.11",
         "apollo-client": "^2.4.7",
